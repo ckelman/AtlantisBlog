@@ -6,11 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+  <link rel="shortcut icon" href="../../assets/favicon.ico">
 
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <%= javascript_include_tag "nav.js"%>
+  
+  
 
   <title>Blog Template for Bootstrap</title>
 </head>
@@ -20,11 +23,22 @@
   <div class="blog-masthead">
     <div class="container">
       <nav class="blog-nav">
-        <a class="blog-nav-item active" href="#">Home</a>
-          <%= link_to 'New post', new_post_path, :class => "blog-nav-item"%>
+          <%= link_to 'Home', posts_path, :class => "blog-nav-item", :id => "home"%>
+          <%= link_to 'New post', new_post_path, :class => "blog-nav-item", :id => "new"%>
           <a class="blog-nav-item" href="#">Press</a>
           <a class="blog-nav-item" href="#">New hires</a>
           <a class="blog-nav-item" href="#">About</a>
+          <div class="pull-right">
+	<% if user_signed_in? %>
+	  Logged in as <strong><%= current_user.email %></strong>.
+	  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'blog-nav-item' %> |
+	  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'blog-nav-item'  %>
+	<% else %>
+	  <%= link_to "Sign up", new_user_registration_path, :class => 'blog-nav-item', :id => "sup"  %> |
+	  <%= link_to "Login", new_user_session_path, :class => 'blog-nav-item', :id => "log"  %>
+	<% end %>
+	</div>
+          
       </nav>
     </div>
   </div>

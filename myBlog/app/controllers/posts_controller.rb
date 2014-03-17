@@ -23,7 +23,9 @@ def create
 end
 
 def edit
+  authenticate_user!
   @post = Post.find(params[:id])
+    
 end
 
 
@@ -34,6 +36,7 @@ def update
 end
 
 def destroy
+  authenticate_user!
   @post = Post.find(params[:id])
   @post.destroy
 
