@@ -33,8 +33,9 @@ group :doc do
 end
 
 #Bootstrap gem
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', branch: 'bootstrap3'
+#gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/#twitter-bootstrap-rails.git', branch: 'bootstrap3'
 
+gem "twitter-bootstrap-rails"
 
 #Devise - Authentication
 gem 'devise'
