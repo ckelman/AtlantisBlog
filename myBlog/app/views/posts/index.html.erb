@@ -12,14 +12,17 @@
           <div class="blog-post">
             <h2 class="blog-post-title"><%= post.title %></h2>
             <p class="blog-post-meta">
-            	January 1, 2014 by <a href="#">Mark</a>
+            	January 1, 2014 by <a href="#"><%=User.find(post.use).email%></a>
             </p>
             
             <p class="blog-post-meta">
-            <%= link_to 'Show', post %>,
+            <%= link_to 'Show', post %>
+            <%if(current_user == User.find(post.use))%>
+            ,
             <%= link_to 'Edit', edit_post_path(post) %>,
             <%= link_to 'Destroy', post_path(post),
 			method: :delete, data: {confirm: 'Are you sure?' } %>
+			<%end%>
             </p>
 
             <p>
@@ -27,7 +30,7 @@
             </p>
           </div><!-- /.blog-post -->
 
-<% end %>
+<% end %> 
 
           
 

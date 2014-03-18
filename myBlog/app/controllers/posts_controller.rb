@@ -9,6 +9,7 @@ def index
 end
 
 def new
+  authenticate_user!
   @post = Post.new
 end
 
@@ -17,14 +18,18 @@ def show
 end
 
 def create
-  @post = Post.new(post_params)
+  @post = Post.new(post_params, use: current_user)
+  @post.use = current_user
   @post.save
   redirect_to @post
 end
 
 def edit
-  authenticate_user!
+  
   @post = Post.find(params[:id])
+  if(current_user != User.find(@post.use))
+    redirect_to Post#index
+  end
     
 end
 
@@ -36,10 +41,11 @@ def update
 end
 
 def destroy
-  authenticate_user!
+  
   @post = Post.find(params[:id])
+  if(current_user == User.find(@post.use))
   @post.destroy
-
+  end
   redirect_to posts_path
 end
 
