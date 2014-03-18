@@ -18,7 +18,7 @@ def show
 end
 
 def create
-  @post = Post.new(post_params, use: current_user, dat: Date.current())
+  @post = current_user.posts.build(post_params)
   @post.use = current_user
   @post.dat = Date.current()
   @post.save
