@@ -18,8 +18,9 @@ def show
 end
 
 def create
-  @post = Post.new(post_params, use: current_user)
+  @post = Post.new(post_params, use: current_user, dat: Date.current())
   @post.use = current_user
+  @post.dat = Date.current()
   @post.save
   redirect_to @post
 end
@@ -37,6 +38,7 @@ end
 def update
   @post = Post.find(params[:id])
   @post.update(params[:post].permit(:title, :entry))
+  @post.dat = Date.current()
   redirect_to @post
 end
 
