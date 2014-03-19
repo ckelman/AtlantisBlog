@@ -1,16 +1,17 @@
-<div class="row">
+  <div class="blog-header">
+      <h1 class="blog-title"><%= @post.title %></h1>
+    </div>
+
+    <div class="row">
 
       <div class="col-sm-8 blog-main">
 
+          <div class="blog-post">
+            <p class="blog-post-meta">
+              <%=Date::MONTHNAMES[@post.dat.month]%> <%=@post.dat.day%>, <%=@post.dat.year%> by <a href="#"><%=User.find(@post.use).email%></a>
+            </p>
 
-<h2>
-	Title: 
-</h2>	
-<p><%= @post.title %></p>
-
-<h2>
-Entry:	
-</h2>
-<p><%= @post.entry %></p>	
-
-<%= link_to 'Back', posts_path%>
+            <p>
+              <%= @post.entry %>
+            </p>
+          </div><!-- /.blog-post -->

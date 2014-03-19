@@ -6,5 +6,9 @@ class CreatePosts < ActiveRecord::Migration
 
       t.timestamps
     end
+    
+    
+    add_column :posts, :use, :user
+
   end
 end
