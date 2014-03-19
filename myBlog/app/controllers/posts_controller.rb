@@ -7,7 +7,7 @@ def new
 end
 
 def index
-  @posts = Post.all
+  @posts = Post.order(:id).reverse_order.page params[:page]
 end
 
 def new

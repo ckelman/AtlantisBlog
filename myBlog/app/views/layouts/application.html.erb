@@ -25,7 +25,6 @@
       <nav class="blog-nav">
           <%= link_to 'Home', posts_path, :class => "blog-nav-item", :id => "home"%>
           <%= link_to 'New post', new_post_path, :class => "blog-nav-item", :id => "new"%>
-          <a class="blog-nav-item" href="#">About</a>
           <div class="pull-right">
 	<% if user_signed_in? %>
 	  Logged in as <strong><%= current_user.email %></strong>.
@@ -53,7 +52,10 @@
           <div class="sidebar-module sidebar-module-inset">
             <h4>About</h4>
             <p>This is a blog I made for Atlantis Tech.  It was written in Ruby on Rails, and 
-              uses bootstrap for the frontend.  It can Create Read Update and Destroy blog posts.</p>
+              uses bootstrap for the frontend.  It can Create Read Update and Destroy blog posts.
+              It also uses user authentication for all of these actions except Read, so if you don't
+              have an account sign up so you can start making your own posts!  Pagination
+              was also included as an extra feature.</p>
           </div>
           
           <div class="sidebar-module">
